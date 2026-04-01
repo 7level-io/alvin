@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.5fb32503.css",
-    "main.js": "/static/js/main.d293e6df.js",
+    "main.js": "/static/js/main.45599e1d.js",
     "static/js/453.48d9438a.chunk.js": "/static/js/453.48d9438a.chunk.js",
     "static/media/alvixedoodle-crop.webp": "/static/media/alvixedoodle-crop.e915212996d5b0eba488.webp",
+    "static/media/Alvin QR.png": "/static/media/Alvin QR.8da61ff4ffb30fbdb184.png",
     "static/media/7level v3.webp": "/static/media/7level v3.fd356dc214d43c5f6b38.webp",
-    "static/media/qr_code_7level_in_transparent.webp": "/static/media/qr_code_7level_in_transparent.34b612060b06b68103ca.webp",
     "index.html": "/index.html",
     "static/media/alvixe.vcf": "/static/media/alvixe.3747a576fae4f7997202.vcf",
     "main.5fb32503.css.map": "/static/css/main.5fb32503.css.map",
-    "main.d293e6df.js.map": "/static/js/main.d293e6df.js.map",
+    "main.45599e1d.js.map": "/static/js/main.45599e1d.js.map",
     "453.48d9438a.chunk.js.map": "/static/js/453.48d9438a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5fb32503.css",
-    "static/js/main.d293e6df.js"
+    "static/js/main.45599e1d.js"
   ]
 }

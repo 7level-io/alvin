@@ -1,5 +1,5 @@
 import React from "react"
-import ProfileQRCode from "../assets/images/qr_code_7level_in_transparent.webp"
+import ProfileQRCode from "../assets/images/Alvin QR.png"
 
 const ProfileQR = () => {
   return (

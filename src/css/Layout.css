@@ -1,159 +1,391 @@
+/* ========================================================
+   GLOBAL BASE & RESET
+   ======================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: #090a0f;
+  color: #f3f4f6;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
+/* ========================================================
+   MAIN LAYOUT CONTAINER
+   ======================================================== */
 .layout-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: clamp(10px, 2vh, 16px) 16px;
+  gap: clamp(8px, 1.5vh, 12px);
+  position: relative;
+  box-sizing: border-box;
+  transition: max-width 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.layout-container.card-view-active {
+  max-width: 520px;
+}
+
+/* ========================================================
+   TOP BRAND LOGO
+   ======================================================== */
+.layout-top-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .top-icon img {
-  max-width: 200px;
+  max-width: 110px;
+  height: auto;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
 }
 
-.profile-section,
-.profile-image img {
+/* ========================================================
+   SCENE STAGE (Center Hub)
+   ======================================================== */
+.scene-stage {
   width: 100%;
-  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  position: relative;
 }
 
-.dark-bg {
-  background-color: #1a1a1a;
-}
-
-.purple-bg {
-  background-color: #1226e7;
-}
-
-.white-bg {
-  background-color: #fff;
-}
-
-.black-icon i {
-  color: #1a1a1a;
-}
-
-.icon-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+/* ========================================================
+   PROFILE SECTION (Clean Balanced Card, No Empty Void)
+   ======================================================== */
+.profile-section {
   width: 100%;
-  gap: 15px 8px;
-}
-
-.icon-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1 1 100px;
-  color: #fff;
-  padding: 25px;
-  border-radius: 15px;
-}
-
-.one-row-item {
-  flex-grow: 1;
-  border-radius: 25px;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none;
-}
-
-.big-icon {
-  aspect-ratio: 1/1;
-}
-
-.icon-item i {
-  font-size: 30px;
-}
-
-.icon-item.schedule {
-  border: none;
-}
-
-.icon-item.schedule:hover {
-  cursor: pointer;
-}
-
-.icon-item.schedule i {
-  font-size: 42px;
-}
-
-.qr-code-container {
-  background-color: #fff;
-  text-align: center;
-  padding: 12px;
-  border-radius: 15px;
-  width: 100%;
-}
-
-img.qr-code {
-  width: 70%;
-}
-
-.footer {
-  margin-top: 30px;
+  background: #11131a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 14px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  gap: 8px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
-.footer-icon {
-  width: 45px;
+.profile-image-container {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #181a24;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  margin: 0 auto;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
-@media screen and (min-width: 700px) {
-  .layout-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 100px;
-  }
+.profile-image-container img.profile-pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-@media screen and (min-width: 440px) {
-  .layout-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 2.5rem;
-  }
-
-  .one-row-item {
-    aspect-ratio: 1/1;
-    border-radius: 15px;
-  }
-
-  img.qr-code {
-    width: 60%;
-  }
+.profile-section:hover img.profile-pic {
+  transform: scale(1.05);
 }
 
-@media screen and (max-width: 439px) {
-  .layout-container {
-    padding: 10px;
-  }
-  .one-row-item {
-    min-width: 300px;
-    flex-grow: 1;
-    border-radius: 25px;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none;
-  }
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.profile-headline {
+  font-size: 13px;
+  color: #9aa1b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.profile-headline .role-tag {
+  color: #4a68ff;
+  font-weight: 600;
+}
+
+.profile-headline .bullet-sep {
+  color: #4a5163;
+}
+
+.profile-headline .org-tag {
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+/* ========================================================
+   ACTION ROW (Single 3-Column Bento Row)
+   ======================================================== */
+.icon-row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.icon-item {
+  width: 100%;
+  border-radius: 14px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 6px;
+  min-height: 60px;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.icon-item:hover {
+  transform: translateY(-2px);
+}
+
+.icon-item:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 1. Contact Button (Dark) */
+.icon-item.dark-bg {
+  background: linear-gradient(135deg, #181b24 0%, #10121a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.icon-item.dark-bg:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.icon-item.dark-bg .action-icon {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.icon-item.dark-bg .action-title {
+  color: #ffffff;
+}
+
+/* 2. Schedule Button (Purple) */
+.icon-item.purple-bg {
+  background: linear-gradient(135deg, #162ce7 0%, #0d1dbb 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.icon-item.purple-bg:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.icon-item.purple-bg .action-icon {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.icon-item.purple-bg .action-title {
+  color: #ffffff;
+}
+
+/* 3. Business Card Button (White) */
+.icon-item.white-bg {
+  background: linear-gradient(135deg, #ffffff 0%, #edeef3 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.icon-item.white-bg:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.icon-item.white-bg .action-icon {
+  font-size: 16px;
+  color: #11131a;
+}
+
+.icon-item.white-bg .action-title {
+  color: #11131a;
+}
+
+.action-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ========================================================
+   QR CODE CARD (Balanced Box, Centered QR)
+   ======================================================== */
+.qr-code-container {
+  width: 100%;
+  background: #11131a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.qr-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2px;
+}
+
+.qr-title-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9aa1b2;
+}
+
+.qr-title-box i {
+  color: #4a68ff;
+  font-size: 12px;
+}
+
+.qr-copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 4px 11px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.qr-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.qr-image-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 115px;
+  height: 115px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+}
+
+.qr-image-wrapper img.qr-code {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========================================================
+   FOOTER
+   ======================================================== */
+.layout-footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  color: #6e768a;
+  font-size: 12px;
+}
+
+.footer-icon-box img.footer-icon {
+  width: 20px;
+  height: auto;
+  opacity: 0.8;
+  display: block;
+}
+
+.footer-icon-box img.footer-icon:hover {
+  opacity: 1;
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-brand-link {
+  color: #4a68ff;
+  transition: color 0.2s;
+}
+
+.footer-brand-link:hover {
+  color: #7087ff;
+  text-decoration: underline;
 }

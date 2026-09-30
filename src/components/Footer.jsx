@@ -3,16 +3,22 @@ import LogoIcon from "../assets/images/7level v3.webp"
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <div className="footer-icon">
-        <img src={LogoIcon} alt="Footer Icon" className="footer-icon" />
+    <footer className="footer">
+      <div className="footer-icon-box">
+        <img src={LogoIcon} alt="7level Logo" className="footer-icon" />
       </div>
       <div className="footer-text">
-        <div>Powered by</div>
-
-        <div className="bold">7level.io</div>
+        <span>Powered by</span>{" "}
+        <a
+          href="https://7level.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bold footer-brand-link"
+        >
+          7level.in
+        </a>
       </div>
-    </div>
+    </footer>
   )
 }
 

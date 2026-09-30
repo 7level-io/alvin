@@ -1,10 +1,17 @@
 import React from "react"
 
-const AdditionalInfo = () => {
+const AdditionalInfo = ({ onClick }) => {
   return (
-    <div className="icon-item big-icon black-icon white-bg">
-      <i className="fa fa-info"></i>
-    </div>
+    <button
+      onClick={onClick}
+      className="icon-item big-icon black-icon white-bg card-action-btn action-card-btn"
+      aria-label="View Business Card"
+      title="View Business Card"
+      type="button"
+    >
+      <i className="fa fa-id-card action-icon"></i>
+      <span className="action-title">Card</span>
+    </button>
   )
 }
 
